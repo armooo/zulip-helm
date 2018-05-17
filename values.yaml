@@ -6,7 +6,7 @@ replicaCount: 1
 externalHost: chat.armooo.net
 
 image:
-  repository: galexrt/zulip
+  repository: armooo/zulip
   tag: latest
 
 resources: {}
