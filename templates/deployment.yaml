@@ -40,6 +40,15 @@ spec:
                 secretKeyRef:
                   name: {{ template "zulip.postgresql.fullname" . }}
                   key: postgres-password
+            - name: SETTING_MEMCACHED_LOCATION
+              value: {{ template "zulip.memcached.fullname" . }}
+            - name: SETTING_RABBITMQ_HOST
+              value: {{ template "zulip.rabbitmq.fullname" . }}
+            - name: SECRETS_rabbitmq_password
+              valueFrom:
+                secretKeyRef:
+                  name: {{ template "zulip.rabbitmq.fullname" . }}
+                  key: rabbitmq-password
           ports:
             - name: http
               containerPort: 80

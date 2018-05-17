@@ -55,3 +55,7 @@ memcached:
 redis:
   cluster:
     enabled: false
+
+rabbitmq:
+  rabbitmq:
+    username: zulip

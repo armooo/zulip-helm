@@ -31,7 +31,14 @@ Create chart name and version as used by the chart label.
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
-
 {{- define "zulip.postgresql.fullname" -}}
 {{- printf "%s-%s" .Release.Name "postgresql" | trunc 63 | trimSuffix "-" -}}
+{{- end -}}
+
+{{- define "zulip.memcached.fullname" -}}
+{{- printf "%s-%s" .Release.Name "memcached" | trunc 63 | trimSuffix "-" -}}
+{{- end -}}
+
+{{- define "zulip.rabbitmq.fullname" -}}
+{{- printf "%s-%s" .Release.Name "rabbitmq" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
