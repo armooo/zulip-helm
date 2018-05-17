@@ -8,12 +8,13 @@ metadata:
     chart: {{ template "zulip.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
+  annotations:
+    kubernetes.io/tls-acme: 'true'
 spec:
-  rules:
-    - host: {{ .Values.externalHost }}
-      http:
-        paths:
-          - path: /
-            backend:
-              serviceName: {{ $fullName }}
-              servicePort: http
+    backend:
+      serviceName: {{ $fullName }}
+      servicePort: http
+    tls:
+      - secretName: {{ template "zulip.fullname" . }}-tls-cert
+        hosts:
+          - {{ .Values.externalHost }}
