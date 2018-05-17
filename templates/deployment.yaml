@@ -49,6 +49,13 @@ spec:
                 secretKeyRef:
                   name: {{ template "zulip.rabbitmq.fullname" . }}
                   key: rabbitmq-password
+            - name: SETTING_REDIS_HOST
+              value: {{ template "zulip.redis.fullname" . }}-master
+            - name: SECRETS_redis_password
+              valueFrom:
+                secretKeyRef:
+                  name: {{ template "zulip.redis.fullname" . }}
+                  key: redis-password
           ports:
             - name: http
               containerPort: 80

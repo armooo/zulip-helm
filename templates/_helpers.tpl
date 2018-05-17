@@ -42,3 +42,7 @@ Create chart name and version as used by the chart label.
 {{- define "zulip.rabbitmq.fullname" -}}
 {{- printf "%s-%s" .Release.Name "rabbitmq" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
+
+{{- define "zulip.redis.fullname" -}}
+{{- printf "%s-%s" .Release.Name "redis" | trunc 63 | trimSuffix "-" -}}
+{{- end -}}
