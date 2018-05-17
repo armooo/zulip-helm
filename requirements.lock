@@ -1,0 +1,15 @@
+dependencies:
+- name: memcached
+  repository: https://kubernetes-charts.storage.googleapis.com/
+  version: 2.1.1
+- name: redis
+  repository: https://kubernetes-charts.storage.googleapis.com/
+  version: 3.2.5
+- name: postgresql
+  repository: https://kubernetes-charts.storage.googleapis.com/
+  version: 0.12.0
+- name: rabbitmq
+  repository: https://kubernetes-charts.storage.googleapis.com/
+  version: 1.1.2
+digest: sha256:7fa8d41b7cbe8a9bfb3141ac78d136bb844749e385c89259a8707e156867df93
+generated: 2018-05-16T20:45:26.188061932-07:00
