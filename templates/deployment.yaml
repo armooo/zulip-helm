@@ -23,18 +23,35 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: DISABLE_HTTPS
+              value: "True"
+            - name: SETTING_EXTERNAL_HOST
+              value: "{{ .Values.externalHost }}"
+            - name: DB_HOST
+              value: {{ template "zulip.postgresql.fullname" . }}
+            - name: DB_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: {{ template "zulip.postgresql.fullname" . }}
+                  key: postgres-password
+            - name: SECRETS_postgres_password
+              valueFrom:
+                secretKeyRef:
+                  name: {{ template "zulip.postgresql.fullname" . }}
+                  key: postgres-password
           ports:
             - name: http
               containerPort: 80
               protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /
-              port: http
+          #livenessProbe:
+          #  httpGet:
+          #    path: /
+          #    port: http
+          #readinessProbe:
+          #  httpGet:
+          #    path: /
+          #    port: http
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}

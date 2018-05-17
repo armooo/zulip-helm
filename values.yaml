@@ -3,11 +3,11 @@
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
+externalHost: chat.armooo.net
 
 image:
-  repository: nginx
-  tag: stable
-  pullPolicy: IfNotPresent
+  repository: galexrt/zulip
+  tag: latest
 
 service:
   type: ClusterIP
@@ -43,3 +43,15 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+postgresql:
+  image: zulip/zulip-postgresql
+  imageTag: latest
+  postgresUser: zulip
+
+memcached:
+  replicaCount: 1
+
+redis:
+  cluster:
+    enabled: false
