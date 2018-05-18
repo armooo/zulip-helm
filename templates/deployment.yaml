@@ -56,6 +56,15 @@ spec:
                 secretKeyRef:
                   name: {{ template "zulip.redis.fullname" . }}
                   key: redis-password
+            - name: SETTING_EMAIL_HOST
+              value: {{ .Values.emailHost }}
+            - name: SETTING_EMAIL_HOST_USER
+              value: {{ .Values.emailHostUser }}
+            - name: SECRETS_email_password
+              valueFrom:
+                secretKeyRef:
+                  name: {{ template "zulip.fullname" . }}
+                  key: email-password
           ports:
             - name: http
               containerPort: 80

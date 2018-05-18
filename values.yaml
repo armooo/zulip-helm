@@ -5,9 +5,14 @@
 replicaCount: 1
 externalHost: chat.armooo.net
 
+# emailHost: smtp.mailgun.org
+# emailHostUser: user
+# emailHostPassword: CHANGEME
+
 image:
   repository: armooo/zulip
   tag: latest
+  imagePullPolicy: Always
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
